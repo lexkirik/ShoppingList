@@ -40,7 +40,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.core.app.ActivityCompat
 import androidx.navigation.NavController
-import java.nio.file.WatchEvent
 
 data class ShoppingItem(
     val id: Int,
@@ -113,6 +112,7 @@ fun ShoppingListApp(
                         editedItem?.let {
                             it.name = editedName
                             it.quantity = editedQuantity
+                            it.address = address
                         }
                     })
                 } else {
@@ -143,7 +143,8 @@ fun ShoppingListApp(
                                 val newItem = ShoppingItem(
                                     id = shoppingItems.size + 1,
                                     name = itemName,
-                                    quantity = itemQuantity.toInt()
+                                    quantity = itemQuantity.toInt(),
+                                    address = address
                                 )
                                 shoppingItems = shoppingItems + newItem
                                 showDialog = false
